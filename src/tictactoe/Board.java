@@ -9,30 +9,38 @@ package tictactoe;
 
 public class Board {
 
+    final int SIZE = 3;
+    String seperator;
+
     // The board will be stored as a 3x3 array of characters.
     // Each position will hold 'X', 'O', or a space ' ' for empty.
     private char[][] board;
 
     // Constructor
     public Board() {
-        board = new char[3][3];
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        board = new char[SIZE][SIZE];
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
                 board[i][j] = ' ';
             }
         }
     }
 
+    /**
+     * This method prints the board to the console
+     */
     public void printBoard() {
 
-        for (int i = 0; i < 3; i++) {
+        String horizontal = "-".repeat(SIZE + (SIZE -1) * 3);
+
+        for (int i = 0; i < SIZE; i++) {
 
             // Print each cell in the row
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < SIZE; j++) {
                 System.out.print(board[i][j]);
 
                 // Print vertical separators between columns
-                if (j != 2) {
+                if (j != SIZE - 1) {
                     System.out.print(" | ");
                 }
             }
@@ -41,8 +49,8 @@ public class Board {
             System.out.println();
 
             // Print horizontal separator between rows
-            if (i != 2) {
-                System.out.println("-----------");
+            if (i != SIZE - 1) {
+                System.out.println(horizontal);
             }
         }
     }
